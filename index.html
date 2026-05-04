@@ -123,9 +123,39 @@
     footer { padding: 28px 0 38px; text-align: center; color: #6f6f6f; font-size: .9rem; }
 
     @keyframes up { from { opacity: 0; transform: translateY(22px);} to { opacity: 1; transform: translateY(0);} }
+    .highlights {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .insight-board {
+      background: #fff;
+      border: 1px solid #f0dccf;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 12px 24px rgba(0,0,0,.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .insight-board::after { content: ""; position: absolute; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(255,122,33,.24), transparent 65%); right: -40px; top: -30px; }
+    .chart-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 14px; }
+    .mini-chart { height: 90px; border-radius: 14px; background: linear-gradient(180deg,#fff7f1,#fff); border: 1px solid #f3dfd1; position: relative; overflow: hidden; }
+    .mini-chart span { position: absolute; bottom: 10px; left: 10px; font-size: .75rem; color:#8a5b3a; font-weight:700; }
+    .bar { position:absolute; bottom: 28px; width: 18%; background:#ff8a3a; border-radius: 6px 6px 0 0; animation: grow 2.2s ease-in-out infinite alternate; }
+    .b1{left:10%;height:34%}.b2{left:40%;height:54%;animation-delay:.2s}.b3{left:70%;height:68%;animation-delay:.4s}
+    .orbit { background: #111821; color: #fff; border-radius: 22px; border: 1px solid #2d3647; position: relative; overflow: hidden; min-height: 220px; display: grid; place-items: center; }
+    .ring { width: 130px; height:130px; border-radius:50%; border: 2px dashed rgba(255,255,255,.35); animation: spin 14s linear infinite; position:relative; }
+    .node { position:absolute; width:14px; height:14px; background:var(--orange); border-radius:50%; }
+    .n1{top:-6px;left:58px}.n2{right:-6px;top:56px}.n3{left:-6px;top:56px}.n4{bottom:-6px;left:58px}
+    .core { position:absolute; inset: 44px; border-radius:50%; background: linear-gradient(135deg,#ff7a21,#ffb27f); display:grid; place-items:center; font-weight:800; font-size:.78rem; color:#1b130d; }
+
+    @keyframes spin {to{transform:rotate(360deg)}}
+    @keyframes grow {from{transform:scaleY(.7)} to{transform:scaleY(1.05)}}
 
     @media (max-width: 900px) {
-      .hero-grid, .service-grid, .projects, .skills { grid-template-columns: 1fr; }
+      .hero-grid, .service-grid, .projects, .skills, .highlights { grid-template-columns: 1fr; }
       .timeline { grid-template-columns: 1fr; }
       .dot-col { display: none; }
     }
@@ -168,6 +198,26 @@
           </ul>
         </aside>
       </div>
+
+      <div class="highlights">
+        <div class="insight-board">
+          <h3>Career Insights Dashboard</h3>
+          <p style="margin:0;color:#6b6b6b">Sample analytics style visuals for Finance, Operations and Growth reporting.</p>
+          <div class="chart-row">
+            <div class="mini-chart"><div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div><span>Finance</span></div>
+            <div class="mini-chart"><div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div><span>Ops</span></div>
+            <div class="mini-chart"><div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div><span>Growth</span></div>
+          </div>
+        </div>
+        <div class="orbit">
+          <div style="position:absolute;top:14px;left:16px;font-weight:700;color:#ffb98c">Business Analysis Cycle</div>
+          <div class="ring">
+            <div class="node n1"></div><div class="node n2"></div><div class="node n3"></div><div class="node n4"></div>
+            <div class="core">KPI</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </header>
 
