@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saurabh Varma | Business Analyst Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f4f4;
+      --ink: #161616;
+      --muted: #727272;
+      --orange: #ff7a21;
+      --dark: #111319;
+      --card: #ffffff;
+      --line: #ececec;
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .wrap { width: min(980px, 92%); margin: 0 auto; }
+
+    .hero {
+      background: linear-gradient(180deg, #fff 0%, #f7f7f7 100%);
+      min-height: 88vh;
+      padding: 28px 0 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 45px;
+    }
+    .logo { font-weight: 800; font-size: 1.15rem; letter-spacing: .3px; }
+    .logo span { color: var(--orange); }
+    .menu { display: flex; gap: 12px; flex-wrap: wrap; }
+    .menu a {
+      text-decoration: none; color: #202020; font-weight: 600; font-size: .92rem;
+      padding: 8px 12px; border-radius: 999px; transition: .25s;
+    }
+    .menu a:hover { background: #fff1e8; color: #db630f; }
+
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 20px; align-items: center; }
+    .hello { color: var(--orange); font-weight: 700; }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 8px 0 12px; line-height: 1.08; }
+    .hero p { color: #5f5f5f; margin: 0 0 20px; max-width: 56ch; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip {
+      background: #fff; border: 1px solid #f2d6c2; padding: 8px 12px;
+      border-radius: 999px; font-size: .84rem; font-weight: 600;
+    }
+    .hero-card {
+      background: #fff; border-radius: var(--radius); padding: 22px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.08);
+      border: 1px solid #ffe5d4;
+      animation: up 1.1s ease;
+    }
+    .contact li { list-style: none; margin-bottom: 8px; color: #494949; font-weight: 500; }
+    .contact strong { color: #1f1f1f; }
+
+    .section { padding: 60px 0; }
+    .section h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); margin: 0 0 18px; }
+    .section h2 span { color: var(--orange); }
+
+    .dark {
+      background: radial-gradient(circle at top right, #292f3f 0%, #12151e 45%, #101216 100%);
+      color: #fff;
+      border-radius: 28px;
+      margin: 0 auto;
+      width: min(1050px, 95%);
+      padding: 50px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .dark::before {
+      content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(135deg, transparent, transparent 14px, rgba(255,122,33,.06) 15px);
+      pointer-events: none;
+    }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; position: relative; z-index: 1; }
+    .service {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+      border-radius: 16px; padding: 18px;
+      transition: .25s;
+    }
+    .service:hover { transform: translateY(-4px); border-color: rgba(255,122,33,.7); }
+
+    .timeline {
+      display: grid; grid-template-columns: 1fr 60px 1fr; gap: 14px; align-items: center;
+      margin-top: 20px;
+    }
+    .dot-col { text-align: center; position: relative; min-height: 290px; }
+    .dot-col::before {
+      content: ""; width: 2px; height: 100%; background: #ffd2b4; position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+    }
+    .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--orange); margin: 40px auto; border: 3px solid #fff; box-shadow: 0 0 0 4px #ff9a53; position: relative; z-index: 1; }
+
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; margin-bottom: 12px; }
+
+    .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { background: #fff3ea; color: #b64d00; border-radius: 999px; padding: 7px 11px; font-size: .82rem; font-weight: 700; }
+
+    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .project { background: #fff; border-radius: 18px; border: 1px solid #efefef; padding: 18px; transition: .25s; }
+    .project:hover { transform: translateY(-5px); box-shadow: 0 16px 30px rgba(0,0,0,.08); }
+
+    .cta {
+      background: #fff; border-radius: 24px; padding: 28px; text-align: center; border: 1px solid #f2d8c7;
+    }
+    .btn {
+      display: inline-block; margin-top: 8px; background: var(--orange); color: #fff;
+      text-decoration: none; padding: 11px 18px; border-radius: 999px; font-weight: 700;
+    }
+
+    footer { padding: 28px 0 38px; text-align: center; color: #6f6f6f; font-size: .9rem; }
+
+    @keyframes up { from { opacity: 0; transform: translateY(22px);} to { opacity: 1; transform: translateY(0);} }
+    .highlights {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .insight-board {
+      background: #fff;
+      border: 1px solid #f0dccf;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 12px 24px rgba(0,0,0,.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .insight-board::after { content: ""; position: absolute; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(255,122,33,.24), transparent 65%); right: -40px; top: -30px; }
+    .chart-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 14px; }
+    .mini-chart { height: 90px; border-radius: 14px; background: linear-gradient(180deg,#fff7f1,#fff); border: 1px solid #f3dfd1; position: relative; overflow: hidden; }
+    .mini-chart span { position: absolute; bottom: 10px; left: 10px; font-size: .75rem; color:#8a5b3a; font-weight:700; }
+    .bar { position:absolute; bottom: 28px; width: 18%; background:#ff8a3a; border-radius: 6px 6px 0 0; animation: grow 2.2s ease-in-out infinite alternate; }
+    .b1{left:10%;height:34%}.b2{left:40%;height:54%;animation-delay:.2s}.b3{left:70%;height:68%;animation-delay:.4s}
+    .orbit { background: #111821; color: #fff; border-radius: 22px; border: 1px solid #2d3647; position: relative; overflow: hidden; min-height: 220px; display: grid; place-items: center; }
+    .ring { width: 130px; height:130px; border-radius:50%; border: 2px dashed rgba(255,255,255,.35); animation: spin 14s linear infinite; position:relative; }
+    .node { position:absolute; width:14px; height:14px; background:var(--orange); border-radius:50%; }
+    .n1{top:-6px;left:58px}.n2{right:-6px;top:56px}.n3{left:-6px;top:56px}.n4{bottom:-6px;left:58px}
+    .core { position:absolute; inset: 44px; border-radius:50%; background: linear-gradient(135deg,#ff7a21,#ffb27f); display:grid; place-items:center; font-weight:800; font-size:.78rem; color:#1b130d; }
+
+    @keyframes spin {to{transform:rotate(360deg)}}
+    @keyframes grow {from{transform:scaleY(.7)} to{transform:scaleY(1.05)}}
+
+    @media (max-width: 900px) {
+      .hero-grid, .service-grid, .projects, .skills, .highlights { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .dot-col { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="wrap">
+      <nav class="nav">
+        <div class="logo">Saurabh <span>Varma</span></div>
+        <div class="menu">
+          <a href="#services">Services</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <div>
+          <div class="hello">Hello, I'm</div>
+          <h1>Saurabh Varma<br />Business Analyst Portfolio</h1>
+          <p>Motivated MBA student in IT & Finance with hands-on capability in Power BI dashboards, advanced Excel reporting, basic SQL analysis, and process improvement documentation for business outcomes.</p>
+          <div class="chips">
+            <span class="chip">MBA (IT & Finance)</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Advanced Excel</span>
+            <span class="chip">Business Analysis</span>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h3>Quick Contact</h3>
+          <ul class="contact">
+            <li><strong>Phone:</strong> 8989486507</li>
+            <li><strong>Email:</strong> hireme.saurabhsharma@gmail.com</li>
+            <li><strong>Location:</strong> Bhopal, Madhya Pradesh</li>
+            <li><strong>LinkedIn:</strong> linkedin.com/in/saurabh-varma</li>
+            <li><strong>Open to:</strong> IT Services & Consulting roles</li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="highlights">
+        <div class="insight-board">
+          <h3>Career Insights Dashboard</h3>
+          <p style="margin:0;color:#6b6b6b">Sample analytics style visuals for Finance, Operations and Growth reporting.</p>
+          <div class="chart-row">
+            <div class="mini-chart"><div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div><span>Finance</span></div>
+            <div class="mini-chart"><div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div><span>Ops</span></div>
+            <div class="mini-chart"><div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div><span>Growth</span></div>
+          </div>
+        </div>
+        <div class="orbit">
+          <div style="position:absolute;top:14px;left:16px;font-weight:700;color:#ffb98c">Business Analysis Cycle</div>
+          <div class="ring">
+            <div class="node n1"></div><div class="node n2"></div><div class="node n3"></div><div class="node n4"></div>
+            <div class="core">KPI</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <section class="dark" id="services">
+    <div class="wrap">
+      <h2>My <span>Services</span></h2>
+      <div class="service-grid">
+        <div class="service"><h3>Business Analysis</h3><p>Requirement gathering, BRD drafting, and stakeholder-oriented problem mapping.</p></div>
+        <div class="service"><h3>Data Reporting</h3><p>Interactive dashboards using Power BI and Excel to track KPIs and trends.</p></div>
+        <div class="service"><h3>Process Improvement</h3><p>Workflow analysis and process flowcharting for better efficiency and user journey.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="experience">
+    <h2>My <span>Work Experience</span> (Project Based)</h2>
+    <div class="timeline">
+      <div>
+        <div class="card"><strong>Financial Dashboard Development</strong><br /><small>Power BI, Excel</small></div>
+        <div class="card"><strong>Application Process Analysis</strong><br /><small>MS Visio, Excel</small></div>
+        <div class="card"><strong>Comparative Financial Study</strong><br /><small>Financial Ratios & Insights</small></div>
+      </div>
+      <div class="dot-col"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      <div>
+        <div class="card">Designed dashboards for KPI monitoring and fast stakeholder decisions.</div>
+        <div class="card">Analyzed end-to-end digital application journey and prepared BRD/flows.</div>
+        <div class="card">Evaluated multiple company statements to recommend performance improvements.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="skills">
+    <h2>Why <span>Hire Me?</span></h2>
+    <div class="skills">
+      <div class="card">
+        <h3>Technical Skills</h3>
+        <div class="tags">
+          <span class="tag">Advanced Excel</span><span class="tag">VLOOKUP</span><span class="tag">Pivot Tables</span>
+          <span class="tag">Power BI</span><span class="tag">SQL Basics</span><span class="tag">MS Office</span>
+          <span class="tag">JIRA (Learning)</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Analytical & Soft Skills</h3>
+        <div class="tags">
+          <span class="tag">Financial Analysis</span><span class="tag">Requirements Gathering</span>
+          <span class="tag">Process Improvement</span><span class="tag">Problem Solving</span>
+          <span class="tag">Communication</span><span class="tag">Collaboration</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Education</h3>
+        <p><strong>MBA (IT & Finance)</strong> — A.P.S. University, Rewa (2026–2028 Expected)</p>
+        <p><strong>BBA</strong> — A.P.S. University, Rewa (2021–2023)</p>
+      </div>
+      <div class="card">
+        <h3>Certifications</h3>
+        <p>Google Data Analytics Professional Certificate — In Progress</p>
+        <p>Microsoft Power BI Data Visualization — In Progress</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="projects">
+    <h2>My <span>Portfolio Projects</span></h2>
+    <div class="projects">
+      <article class="project">
+        <h3>Financial Dashboard Development</h3>
+        <p>Interactive KPI dashboard enabling accurate and quicker data-based decisions.</p>
+      </article>
+      <article class="project">
+        <h3>Application Process Analysis</h3>
+        <p>User journey analysis with process flow improvements and clear requirements documentation.</p>
+      </article>
+      <article class="project">
+        <h3>Comparative Financial Study</h3>
+        <p>Structured ratio-based study across companies with insights and recommendations.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section wrap" id="contact">
+    <div class="cta">
+      <h2>Have an Awesome Project Idea? <span style="color:var(--orange)">Let's Discuss</span></h2>
+      <p>Available for entry-level Business Analyst, IT Business Analyst, and Process Analyst opportunities.</p>
+      <a class="btn" href="mailto:hireme.saurabhsharma@gmail.com">Hire Me</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Saurabh Varma • English (Professional), Hindi (Native) • Open to relocation across India.
+  </footer>
+</body>
+</html>
